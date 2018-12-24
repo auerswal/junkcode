@@ -3,6 +3,10 @@ Erik's Junk Code
 This repository contains pieces of code that I have written to e.g. learn
 something or try something out. They may be useful as examples.
 
+My "single file tools" (https://github.com/auerswal/sft) repository is
+for ready-to-use tools that I intend to use regularly, while this junkcode
+repository is for examples or one-off solutions.
+
 This collection of junk code is inspired by Andrew "Tridge" Tridgell's
 junk code:
 https://www.samba.org/ftp/tridge/talks/junkcode.pdf
