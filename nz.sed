@@ -16,6 +16,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# The "nz" filter suppresses lines that contain decimal numbers, if
+# all those numbers are zero. This can be useful if a list of error
+# counters contains mostly zero values, but one is interested in the
+# few non-zero cases.
+# 
+# The simple "nz" filter has no special cases, so that e.g. an
+# interface name of "eth0" or "Ethernet0/0" would be filtered out
+# as well.
+
 # print line if
 # 1) no 0 in the line
 # 2) one zero followed by a non-zero digit
