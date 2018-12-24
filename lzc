@@ -16,4 +16,7 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Remove leading zeros in (hexa)decimal numbers. For IPv6 addresses this
+# is known as "leading zero compression", hence the name.
+
 s/\(^\|[^[:xdigit:]]\)0\+\([[:xdigit:]]\+\([^[:xdigit:]]\|$\)\)/\1\2/g
