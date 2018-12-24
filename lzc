@@ -17,6 +17,17 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Remove leading zeros in (hexa)decimal numbers. For IPv6 addresses this
-# is known as "leading zero compression", hence the name.
+# is known as "leading zero compression", hence the name. In electrical
+# engineering this is known as suppression of leading zeros.
 
-s/\(^\|[^[:xdigit:]]\)0\+\([[:xdigit:]]\+\([^[:xdigit:]]\|$\)\)/\1\2/g
+# Each segment of zeros to remove must be anchored between two non xdigits.
+# This means that one s///g invocation skips every second group of xdigits.
+# The same s///g invocation can be used twice.
+#s/\(^\|[^[:xdigit:]]\)0\+\([[:xdigit:]]\+\([^[:xdigit:]]\|$\)\)/\1\2/g
+#s/\(^\|[^[:xdigit:]]\)0\+\([[:xdigit:]]\+\([^[:xdigit:]]\|$\)\)/\1\2/g
+# Alternatively, whenever leading zeros are compressed (or suppressed),
+# the script can jump (branch) back to re-start the substitution. With
+# this re-starting, the "g" flag to the s/// command is no longer needed.
+: restart
+s/\(^\|[^[:xdigit:]]\)0\+\([[:xdigit:]]\+\([^[:xdigit:]]\|$\)\)/\1\2/
+t restart
