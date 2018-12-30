@@ -19,5 +19,10 @@
 # Fold (break) long lines by adding '\n ' as done e.g. in LDIF (RFC 2849)
 # and iCalendar (RFC 5545). This script uses a hardcoded maximum line
 # length of 72 characters.
+#
+# This script breaks a line after 72 characters, any subsequents breaks
+# of the same input line result in 73 character long lines caused by the
+# additional whitespace character added to the output, but not counted
+# as input.
 
 s/[^\n]{72}/&\n /g
