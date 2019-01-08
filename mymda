@@ -1,0 +1,59 @@
+#!/usr/bin/expect -f
+
+# mymda - extremely simple MDA written in expect
+# Copyright (C) 2005  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+if {!((4 <= $argc) && ($argc <= 5))} {
+  puts "Usage: $argv0 MAILSERVER \[PORT\] FROM TO FILE"
+  exit
+}
+set SERVER [lrange $argv 0 0]
+if {$argc == 4} {
+  set PORT 25
+  set FROM [lrange $argv 1 1]
+  set TO [lrange $argv 2 2]
+  set FILE [lrange $argv 3 3]
+} elseif {$argc == 5} {
+  set PORT [lrange $argv 1 1]
+  set FROM [lrange $argv 2 2]
+  set TO [lrange $argv 3 3]
+  set FILE [lrange $argv 4 4]
+}
+#puts "$SERVER $PORT $FROM $TO $FILE"
+
+set PROG telnet
+
+if {![file exists $FILE]} {
+  puts "No file $FILE"
+  exit 1
+}
+
+set DATA [exec cat $FILE]
+#puts $DATA
+#exit
+spawn $PROG $SERVER $PORT
+expect "220"
+send "HELO dontcare\r"
+expect "250"
+send "MAIL FROM: $FROM\r"
+expect "250"
+send "RCPT TO: $TO\r"
+expect "250"
+send "DATA\r"
+expect "354"
+send "$DATA\r.\r"
+expect "250"
+send "QUIT\r"
