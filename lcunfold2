@@ -20,10 +20,10 @@
 # draft-ietf-netmod-artwork-folding-04. Both methods ('\' and '\\')
 # of line wrapping described in the I-D are supported. The I-D requires
 # a header to signal beginning of text with folded (wrapped) lines, but
-# no footer to signal the end of folded text. This script ignores the
-# header instead of removing it while unfolding, i.e. reversing the
-# line wrapping.
+# no footer to signal the end of folded text. This script removes the
+# header as intended.
 
+/NOTE: '\\\\?' line wrapping per BCP [0-9X]+ \(RFC [0-9X]+\)/{N;d}
 :RN
 $!N
 s/\\\n[[:space:]]*\\?//
