@@ -22,6 +22,7 @@
 # of line wrapping described in the I-D is used. The I-D requires
 # a header to signal beginning of text with folded (wrapped) lines, but
 # no footer to signal the end of folded text. This script adds the header.
+# The maximum line length is hard-coded to 69.
 
 printf -- "NOTE: '%s' line wrapping per BCP XX (RFC XXXX)\n\n" '\\'
 exec sed -r 's/(.{68})(..)/\1\\\n\\\2/;tMORE;bEND;:MORE;P;D;:END' "$@"
