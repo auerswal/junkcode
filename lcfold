@@ -21,8 +21,13 @@
 # maximum line length of 72 characters.
 #
 # This script breaks a line after 72 characters, any subsequents breaks
-# of the same input line result in 73 character long lines caused by the
-# additional whitespace character added to the output, but not counted
-# as input.
+# of the same input line occur after 71 characters because of the <space>
+# character added to the output.
 
-s/[^\n]{72}/&\n /g
+s/(.{72})(..)/\1\n \2/
+t MORE
+b END
+: MORE
+P
+D
+: END
