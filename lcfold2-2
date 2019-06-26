@@ -1,0 +1,27 @@
+#! /bin/sh
+
+# lcfold2-2 - fold long lines using <backslash><newline><backslash>
+# for line continuation
+# Copyright (C) 2019  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Fold (line wrap) long lines as described in Internet Draft (I-D)
+# draft-ietf-netmod-artwork-folding-04. In this script Strategy 2 ('\\')
+# of line wrapping described in the I-D is used. The I-D requires
+# a header to signal beginning of text with folded (wrapped) lines, but
+# no footer to signal the end of folded text. This script adds the header.
+
+printf -- "NOTE: '%s' line wrapping per BCP XX (RFC XXXX)\n\n" '\\'
+exec sed -r 's/(.{68})(..)/\1\\\n\\\2/;tMORE;bEND;:MORE;P;D;:END' "$@"
