@@ -24,7 +24,7 @@
 # of the same input line occur after 71 characters because of the <space>
 # character added to the output.
 
-s/(.{72})(..)/\1\n \2/
+s/(.{72})(.)/\1\n \2/
 t MORE
 b END
 : MORE
