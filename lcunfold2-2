@@ -1,4 +1,4 @@
-#! /bin/sed -rf
+#! /bin/sed -Ef
 
 # lcunfold2-2 - unfold lines using <backslash><newline><backslash>
 # for line continuation

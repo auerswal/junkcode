@@ -1,4 +1,4 @@
-#! /bin/sed -rf
+#! /bin/sed -Ef
 
 # lcfold - fold lines using one space character for line continuation
 # Copyright (C) 2018-2019  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
