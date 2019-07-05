@@ -1,0 +1,36 @@
+#! /bin/sh
+
+# striprfcpagination - strip pagination from RFCs and Internet-Drafts
+# Copyright (C) 2019  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Take the text of an RFC or Internet-Draft formatted with pagination
+# (page header, page footer, form-feed control character).
+#
+# First, remove all page header and footer lines. Note that the first
+# page does not have a header.
+#
+# Second, replace consecutive empty lines with a single empty line.
+#
+# The resulting text is well suited to be read with a common pager
+# in the likes of more or less.
+#
+# Note that a page break inserted inside a paragraph of the input text
+# leads to a spurious empty line in the output of this program.
+
+sed -E \
+ '/^(Internet-Draft|RFC[[:space:]]*[[:digit:]]+)([[:space:]]{3,}[^[:space:]].+[[:space:]]{3,}[^[:space:]]+)|\[[Pp]age[[:space:]]+[[:digit:]]+\]|\f/d' \
+ -- "$@" \
+| sed -E '/^$/{H;$!d};x;s/\n+/\n/'
