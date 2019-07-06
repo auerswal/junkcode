@@ -1,7 +1,7 @@
-#! /bin/sed -nrf
+#! /bin/sed -nEf
 
 # nz.sed - filter out lines in which all decimal numbers are zero
-# Copyright (C) 2016  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
+# Copyright (C) 2016-2019  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
