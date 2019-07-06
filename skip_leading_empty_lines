@@ -1,4 +1,4 @@
-#! /bin/sed -nEf
+#! /bin/sed -nf
 
 # skip_leading_empty_lines - skip leading empty lines of input
 # Copyright (C) 2019  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
