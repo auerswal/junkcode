@@ -1,0 +1,62 @@
+#! /usr/bin/awk -f
+
+# tcat - tabulate output by aligning fields in text file
+# Copyright (C) 2019  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Take input text with fields separated by <space> and output them padded
+# with <space> characters to align fields. Output fields separated by <space>.
+#
+# This is an alternative implementation of rsc.io/tcat which I stumbled
+# upon reading the https://research.swtch.com/vgo-repro blog post.
+# rsc.io/tcat seems to output two <space>s between fields, while this
+# script outputs one <space> by default.
+#
+# Awk's FS is used to split input records (usually lines) into fields,
+# Awk's OFS is used to separate output fields. FS and OFS can be controlled
+# using command line operands.
+#
+# Setting OFS to two <spaces> (-v OFS='  ') results in two <space>s between
+# output fields as in the rsc.io/tcat implementation.
+#
+# Examples:
+# $ printf 'a b c\naaa b c\na bbb c\n' | tcat
+# $ tcat -F ':' -v OFS='  ' /etc/passwd
+# $ getent group | cut -d: -f1,4 | tcat -F:
+# $ sed '/^#/d' $HOME/.wget-hsts | tcat -F '\t' -v OFS='  '
+# $ apt-cache search -n erlang | tcat -F ' - ' -v OFS='  ' | cut -c-$COLUMNS
+
+function max(a, b)
+{
+  return a > b ? a : b
+}
+
+{
+  line[NR] = $0
+  for (f = 1; f <= NF; f++) {
+    max_field_width[f] = max(length($f), max_field_width[f])
+  }
+}
+
+END {
+  for (l = 1; l <= NR; l++) {
+    num_fields = split(line[l], tmp_array)
+    for (f = 1; f <= num_fields; f++) {
+      if (f > 1) printf("%s", OFS)
+      printf("%-" max_field_width[f] "s", tmp_array[f])
+    }
+    printf("%s", ORS)
+  }
+}
