@@ -31,6 +31,10 @@
 # Setting OFS to two <spaces> (-v OFS='  ') results in two <space>s between
 # output fields as in the rsc.io/tcat implementation.
 #
+# The command "column -t" of BDS Unix origin, available in Debian GNU/Linux
+# as part of the bsdmainutils package, produces the same output as rsc.io/tcat
+# does.
+#
 # Examples:
 # $ printf 'a b c\naa bbbb\naaa b c\na bbb c\n' | tcat
 # $ tcat -F ':' -v OFS='  ' /etc/passwd
