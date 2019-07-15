@@ -32,10 +32,10 @@
 # output fields as in the rsc.io/tcat implementation.
 #
 # Examples:
-# $ printf 'a b c\naaa b c\na bbb c\n' | tcat
+# $ printf 'a b c\naa bbbb\naaa b c\na bbb c\n' | tcat
 # $ tcat -F ':' -v OFS='  ' /etc/passwd
-# $ getent group | cut -d: -f1,4 | tcat -F:
-# $ sed '/^#/d' $HOME/.wget-hsts | tcat -F '\t' -v OFS='  '
+# $ getent group | cut -d: -f1,4 | tcat -F: -v OFS=': '
+# $ sed '/^#/d' $HOME/.wget-hsts | tcat -F'\t' -v OFS='  '
 # $ apt-cache search -n erlang | tcat -F ' - ' -v OFS='  ' | cut -c-$COLUMNS
 
 function max(a, b)
