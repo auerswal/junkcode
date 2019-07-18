@@ -27,6 +27,9 @@
 #
 # Please note that the script does not check if the decimal number is
 # actually representable as a YANG decimal64.
+#
+# This script canonicalizes every number literal in the input stream,
+# number literals can be adjunct to non-numbers, e.g., text.
 
 # add missing decimal point to integers
 : adp
