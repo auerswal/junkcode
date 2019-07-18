@@ -39,7 +39,18 @@ s/\.([^[:digit:]]|$)/.0\1/g
 # remove leading plus sign
 s/\+([[:digit:]]+\.[[:digit:]]+)/\1/g
 # canonicalize the number zero
-s/(^|[^[:digit:]])(-?)0+\.0+([^[:digit:]]|$)/\10.0\3/g
+## squeeze leading zeros
+: czlz
+s/(^|[^[:digit:]])-?0+0\./\10./
+t czlz
+## squeeze trailing zeros
+: cztz
+s/\.00+([^[:digit:]]|$)/.0\1/
+t cztz
+## negative zero == positive zero
+: nnz
+s/-0\.0([^[[:digit:]]|$)/0.0\1/
+t nnz
 # remove leading zeros
 : rlz
 s/(^|[^[:digit:]])0+([1-9][[:digit:]]*\.)/\1\2/
