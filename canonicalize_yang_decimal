@@ -33,9 +33,9 @@
 s/(^|[^-+.[:digit:]])([-+[:digit:]][[:digit:]]*)([^-+.[:digit:]]|$)/\1\2.0\3/
 t adp
 # add missing zero before decimal point
-s/(^|[^[:digit:]])\./\10./
+s/(^|[^[:digit:]])\./\10./g
 # add missing zero after decimal point
-s/\.([^[:digit:]]|$)/.0\1/
+s/\.([^[:digit:]]|$)/.0\1/g
 # remove leading plus sign
 s/\+([[:digit:]]+\.[[:digit:]]+)/\1/g
 # canonicalize the number zero
