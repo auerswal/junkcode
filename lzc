@@ -24,6 +24,9 @@
 # input stream, e.g., 0ab.02 -> ab.2 (what looks like a decimal point is
 # treated as something different from a number). This allows to use lzc
 # on IPv4 and IPv6 addresses embedded in text.
+#
+# lzc can be used to remove leading zeros from MAC addresses, e.g., to
+# generate the MAC address form to grep for in some logs from EXOS.
 
 # Each segment of zeros to remove must be anchored between two non xdigits.
 # This means that one s///g invocation skips every second group of xdigits.
