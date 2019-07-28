@@ -31,9 +31,23 @@
 # Setting OFS to two <spaces> (-v OFS='  ') results in two <space>s between
 # output fields as in the rsc.io/tcat implementation.
 #
-# The command "column -t" of BDS Unix origin, available in Debian GNU/Linux
-# as part of the bsdmainutils package, produces the same output as rsc.io/tcat
-# does.
+# The command "column -t" of BSD Unix origin, available in Debian GNU/Linux
+# as part of the bsdmainutils package, produces similar output to rsc.io/tcat.
+#
+# By default, "column" will ignore empty input lines, and omit them from output,
+# while this script will keep them. The "-e" option to column keeps empty lines.
+#
+# By default, "column" will treat multiple adjacent delimiters as delimiting
+# exactly two fields, while this script will treat multiple adjacent delimiters
+# as delimiting multiple fields, if the field separator is set to a non-default
+# value (using option "-F <value>" or "-v FS=<value>"). To allow merging of
+# adjacent delimiters, a regular expression can be used (e.g., -F '\t+').
+#
+# For input files where one or more TAB characters separate fields, the
+# following invocations of "column" respectivly "tcat" produce similar output:
+#
+#     column -e -t -s '^V^I'
+#     tcat -F '\t+' -v OFS='  '
 #
 # Examples:
 # $ printf 'a b c\naa bbbb\naaa b c\na bbb c\n' | tcat
