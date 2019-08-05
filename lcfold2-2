@@ -25,5 +25,5 @@
 # The maximum line length is hard-coded to 69.
 
 printf -- "NOTE: '%s' line wrapping per BCP XX (RFC XXXX)\n\n" '\\'
-sed -E '/\\$/{N;s/\\\n( *\\)/\\\\\n\\\n\1/}' -- "$@" | \
+sed -E '{H;$!d};x;s/^\n//;s/(\\)(\n *\\)/\1\\\n\\\2/g' -- "$@" | \
 sed -E 's/(.{68})(..)/\1\\\n\\\2/;tMORE;bEND;:MORE;P;D;:END'
