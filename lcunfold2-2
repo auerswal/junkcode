@@ -26,9 +26,7 @@
 # Note that this script does not check for valid input.
 
 /NOTE: '\\\\' line wrapping per BCP [0-9X]+ \(RFC [0-9X]+\)/{N;d}
-:RN
-$!N
-s/\\\n[[:space:]]*\\//
-tRN
-P
-D
+{H;$!d}
+x
+s/^\n//
+s/\\\n *\\//g
