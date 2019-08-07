@@ -1,0 +1,85 @@
+#! /usr/bin/awk -f
+
+# lcunfold4 - combine multiline FTP replies
+# Copyright (C) 2019  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Unfold (re-combine) lines folded as described in section 4.2 of RFC 959.
+#
+# Every FTP reply begins with a three digit number. After that comes either
+# a space (<SP>) or a hyphen (minus) character. Single line responses use
+# the first form, multiline responses start with the second.
+#
+# The last line of the multiline response starts with the same three digit
+# number as the first, followed by a space character.
+#
+# Multi-line replies may not be nested.
+#
+# The unfolded message may contain additional space characters.
+#
+# Nesting multi-line replies could work if a stack is used to save start
+# codes, but the specification does not include this.
+#
+# The last lines of nested multi-line replies are kept as if they were
+# single-line replies. That may even be an unplanned feature. ;-)
+
+# single line reply, or end of multi-line reply
+/^[1-5][0-5][0-9] / {
+  if (sc != 0) {
+    ec = substr($0, 0, 3)
+    if (sc != ec) {
+      print "lcunfold4: error: start code '" sc "' != end code '" ec "': " \
+            $0 \
+            > "/dev/stderr"
+      sc = ec = 0
+      next
+    }
+    sub("^....", "", $0)
+    print msg " " $0
+    sc = ec = 0
+    next
+  } else {
+    print
+    next
+  }
+}
+
+# start of multi-line reply
+/^[1-5][0-5][0-9]-/ {
+  if (sc != 0) {
+    print "lcunfold4: error: multi-line replies may not be nested: " \
+            $0 \
+          > "/dev/stderr"
+    sc = ec = 0
+    next
+  }
+  sc = substr($0, 0, 3)
+  sub("^....", "", $0)
+  msg = sc " " $0
+  next
+}
+
+# a middle line of a multi-line reply
+{
+  if (sc == 0) {
+    print "lcunfold4: error: reply does not start with valid code: " \
+            $0 \
+          > "/dev/stderr"
+    sc = ec = 0
+    next
+  }
+  msg = msg " " $0
+  next
+}
