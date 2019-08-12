@@ -18,6 +18,9 @@
 
 # Unfold (re-combine) lines folded as done e.g. in LDIF (RFC 2849),
 # iCalendar (RFC 5545), or HTTP (RFC 2616).
+#
+# Use of recursive unfolding is fine, because only folded lines may start
+# with whitespace.
 
 :RN
 $!N
