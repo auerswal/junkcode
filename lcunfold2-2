@@ -24,6 +24,15 @@
 # no footer to signal the end of folded text. This script removes the
 # header as intended.
 # Note that this script does not check for valid input.
+# Since this line folding technique does not use the concept of an escape
+# character (although it might look this way) and is intended to be able
+# to fold even content that already contains the folding sequence (without
+# folding semantics), a recursive unfolding strategy cannot be used. Thus
+# the whole file is read into the hold space and every folding sequence
+# is removed once. If the data contains folding sequences after this step,
+# they have been part of the unfolded input data and shall be kept. This
+# is the basis of using "forced folding" to correctly work on input that
+# already contains the folding sequence.
 
 /NOTE: '\\\\' line wrapping per BCP [0-9X]+ \(RFC [0-9X]+\)/{N;d}
 {H;$!d}
