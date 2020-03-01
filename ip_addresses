@@ -675,7 +675,10 @@ B:B:B:B::11/64
 192.0.2.1
 2001:db8:c001:cafe:00c0:2:2100:0
 2001:db8:c001:cafe:c0:2:2100:0
+2001:db8:1234::80
+fd00:dead:beef:1::1
 %%%% no correct IP addresses below this line %%%%
+fd00:dead:beef:1::1.http
 2001:db8:coo1:cafe:00c0:2:2100:0
 2001:db8:coo1:cafe:c0:2:2100:0
 [::ffff:192.0.2.1]
