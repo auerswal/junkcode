@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #   ip_addresses - print tight regular expressions for IPv4 and IPv6 addresses
-#   Copyright (C) 2018  Erik Auerswald
+#   Copyright (C) 2018-2020  Erik Auerswald
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -670,7 +670,11 @@ B:B:B:B::11/64
 1234:5678:9abc:def0::/64
 ::ffff:192.0.2.1
 192.0.2.1
+2001:db8:c001:cafe:00c0:2:2100:0
+2001:db8:c001:cafe:c0:2:2100:0
 %%%% no correct IP addresses below this line %%%%
+2001:db8:coo1:cafe:00c0:2:2100:0
+2001:db8:coo1:cafe:c0:2:2100:0
 [::ffff:192.0.2.1]
 [192.0.2.1]
 192.0.2.1/255.255.255.0
