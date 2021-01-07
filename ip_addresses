@@ -694,6 +694,10 @@ fEBf::a%33/64
 fec0::1234%0
 fec0::1234%0/64
 fec0::fA34%0/64
+fe80::1234
+ff02::5678
+ff08::9abc
+fe80::2
 %%%% no correct IP addresses below this line %%%%
 127/8
 fd00:dead:beef:1::1.http
