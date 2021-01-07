@@ -698,7 +698,15 @@ fe80::1234
 ff02::5678
 ff08::9abc
 fe80::2
+fe80::206:98ff:fe00:232%tap0
+fe80::230:48ff:fed9:40f5%2
+fe80::230:48ff:fed9:40f5%252
+fe80::230:48ff:fed9:40f5%em1
+fe80::a%en1
+fe80::a%25ee1
+fe80::201:2eff:fe6c:1234%enp66s0
 %%%% no correct IP addresses below this line %%%%
+fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
 fd00:dead:beef:1::1.http
 2001:db8:coo1:cafe:00c0:2:2100:0
@@ -846,6 +854,15 @@ A:A:A:A::X/64
 B:B:B:B::X/64
 C:C:C:C::X/64
 D:D:D:D::X/64
+http://[fe80::206:98ff:fe00:232%tap0]/
+[fe80::206:98ff:fe00:232%tap0]
+http://[fe80::230:48ff:fed9:40f5%252]
+[fe80::230:48ff:fed9:40f5%252]
+[fe80::1%251]
+http://[fe80::230:48ff:fed9:40f5%25n%C3%A9t0]
+[fe80::230:48ff:fed9:40f5%25n%C3%A9t0]
+http://[fe80::201:2eff:fe6c:1234%enp66s0]/
+[fe80::201:2eff:fe6c:1234%enp66s0]
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
