@@ -166,6 +166,10 @@ fe80::52:46ff:fec6:818f/64
 fe80::/10
 fe80::/64
 fc00::/7
+fd00::/8
+fd00::/8
+FD00::/8
+FD00::/8
 ::ffff:0:0/96
 ::FFFF:0:0/96
 ::ffff:0:0:0/96
@@ -705,6 +709,8 @@ fe80::230:48ff:fed9:40f5%em1
 fe80::a%en1
 fe80::a%25ee1
 fe80::201:2eff:fe6c:1234%enp66s0
+fd12:3456:7890:abcd::/64
+fd63:45eb:dc14:0:8546:6ab7:1529:b435
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -871,6 +877,8 @@ http://[fe80::a-en1]
 [fe80::a-en1]
 http://[v6.fe80::a_en1]
 [v6.fe80::a_en1]
+Addr%iface
+xyz
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
