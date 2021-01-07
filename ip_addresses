@@ -863,6 +863,14 @@ http://[fe80::230:48ff:fed9:40f5%25n%C3%A9t0]
 [fe80::230:48ff:fed9:40f5%25n%C3%A9t0]
 http://[fe80::201:2eff:fe6c:1234%enp66s0]/
 [fe80::201:2eff:fe6c:1234%enp66s0]
+http://[fe80::a%en1]
+[fe80::a%en1]
+http://[fe80::a%25en1]
+[fe80::a%25en1]
+http://[fe80::a-en1]
+[fe80::a-en1]
+http://[v6.fe80::a_en1]
+[v6.fe80::a_en1]
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
