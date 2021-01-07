@@ -47,9 +47,10 @@ IPv6_quad3="([[:xdigit:]]{1,4}:){2}:([[:xdigit:]]{1,4}:){0,3}${dot_quad}"
 IPv6_quad4="([[:xdigit:]]{1,4}:){3}:([[:xdigit:]]{1,4}:){0,2}${dot_quad}"
 IPv6_quad5="([[:xdigit:]]{1,4}:){4}:([[:xdigit:]]{1,4}:){0,1}${dot_quad}"
 IPv6_quad6="([[:xdigit:]]{1,4}:){5}:${dot_quad}"
-# allow zone IDs for multicast and link-local IPv6 addresses
-# this includes FE80::/10, not just FE80::/64
-IPv6_zone_pre='(([fF]{2}[[:xdigit:]]{2})|([fF][eE][89ab][[:xdigit:]]))'
+# allow zone IDs for multicast, site-local, and link-local IPv6 addresses,
+# i.e., ff00::/8, fe80::/10, and fec0/10 (fe80/9)
+# link-local includes FE80::/10, not just FE80::/64
+IPv6_zone_pre='(([fF]{2}[[:xdigit:]]{2})|([fF][eE][89ABCDEFabcdef][[:xdigit:]]))'
 # zone IDs are arbitrary character strings
 IPv6_zone_id='%(([^/][^%]*)|(/[^%]*[^0-9%][^%]*))'
 IPv6_z_l='([[:xdigit:]]{1,4}:){6}[[:xdigit:]]{1,4}'
@@ -681,6 +682,18 @@ B:B:B:B::11/64
 2001:db8:1234::80
 fd00:dead:beef:1::1
 0:0:0:0:0:FFFF:7F00:0/104
+FEC0::1234:5678:9ABC
+FEC0::1234:5678:9ABC%1
+fec0::1234:5678:9abc
+fec0::1234:5678:9abc%1
+febf::a
+FeBf::A
+fEbf::a%33
+fEBf::a%33
+fEBf::a%33/64
+fec0::1234%0
+fec0::1234%0/64
+fec0::fA34%0/64
 %%%% no correct IP addresses below this line %%%%
 127/8
 fd00:dead:beef:1::1.http
@@ -736,9 +749,7 @@ fe80::1234%
 ff02::5678%/64
 ff08::9abc%/64
 fe80::1234%/64
-fec0::1234%0
-fec0::1234%0/64
-fec0::fA34%0/64
+fec0::1234%/64
 g::
 G::
 ::12345
