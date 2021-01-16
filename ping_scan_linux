@@ -1,0 +1,41 @@
+#! /bin/sh
+
+# ping_scan_linux - Send an ICMP echo request to each of the IPs given.
+# Copyright (C) 2018 Erik Auerswald <auerswal@unix-ag.uni-kl.de>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved.  This file is offered as-is,
+# without any warranty.
+
+# This is a simple implementation of a ping scan for use on GNU/Linux.
+# It requires ping from iputils (or a ping with compatible output format
+# and options).
+#
+# A full featured ping scan implementation can be found at my home page:
+# https://www.unix-ag.uni-kl.de/~auerswal/ping_scan/
+# or as part of my Single File Tools (SFT) collection:
+# https://github.com/auerswal/sft
+
+{ \
+for i in "$@"; do \
+  ping -c1 -q -W3 "$i" 2>/dev/null& \
+done; \
+wait; \
+} \
+| sed -n '/^---/{N;s/^--- \([^ ]*\) .*\n1 [^1]*1 rec.*$/\1 is alive/p}' \
+| sort -t. -k1,1n -k2,2n -k3,3n -k4,4n -u
+wait
