@@ -718,6 +718,9 @@ d00::face:b00c:1
 ::f
 0::01
 0:1:2::007
+0011:2233:4455:6677:8899:aabb:ccdd:eeff
+fe80::2%eth0
+fe80::23%tailscale0
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
