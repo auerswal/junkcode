@@ -30,12 +30,12 @@ os.close(fd)
 
 # overwrite echoed terminal answer(s)
 time.sleep(0.15)
-print '\rpress CTRL-D to continue...' 
+print '\rpress ENTER or CTRL-D to continue...'
 
 # Python needs to be kicked to read the data, the script will block
 # until the user does something useful...
 
-# read the first arriving answer
+# read the first arriving answer, or time out
 signal.alarm(15)
 reply_list = []
 fd = os.open('/dev/tty', os.O_RDONLY)
