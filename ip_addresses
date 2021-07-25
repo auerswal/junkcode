@@ -916,6 +916,7 @@ fd00:face:b0Oc:1
 ::-1
 ::0abcd
 1.2.3.4.
+[::1]:5300
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
