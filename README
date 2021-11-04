@@ -19,6 +19,6 @@ https://github.com/tridge/junkcode/
 
 All code in this repository is available under the GNU General Public License
 version 3, or (at your option) any later version (with the exception of
-resize.py).
+resize.py and resize3.py which are GPLv3 only).
 
 Visit my homepage at https://www.unix-ag.uni-kl.de/~auerswal/.
