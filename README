@@ -3,6 +3,9 @@ Erik's Junk Code
 This repository contains pieces of code that I have written to, e.g., learn
 something or try something out. They may be useful as examples.
 
+I do not document the individual examples in the README file, but rather
+use comments inside the example files themselves.
+
 Since I use the GNU operating system, I usually test with GNU tools, e.g.,
 GNU bash, GNU Awk, and GNU sed. The examples may not work with non-GNU
 implementations.
