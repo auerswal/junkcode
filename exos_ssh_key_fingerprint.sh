@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # exos_ssh_key_fingerprint.sh - compute fingerprint for ExtremeXOS SSH key.
-# Copyright (C) 2018  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
+# Copyright (C) 2018-2022  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ test "$#" -eq 1 ||
 umask 0077
 TDIR="$(mktemp -d "exos_ssh_key_fingerprint.$$.XXXXXXXXXX")" ||
   { echo 'ERROR: could not create temporary directory'; exit 1; }
-trap "rm -rf \"$TDIR\"" 0 1 2 3 15
+trap "rm -rf \"$TDIR\"" 0
 
 tr -dc '[:xdigit:]' < "$1" | xxd -p -r > "$TDIR/key.ascii"
 fgrep -i encrypted "$TDIR/key.ascii" >/dev/null 2>&1 &&

@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #   ip_addresses - print tight regular expressions for IPv4 and IPv6 addresses
-#   Copyright (C) 2018-2021  Erik Auerswald
+#   Copyright (C) 2018-2022  Erik Auerswald
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -70,7 +70,7 @@ IPv6="(((${IPv6_long})|(${IPv6_short0})|(${IPv6_short1})|(${IPv6_short2})|(${IPv
 
 # test the regular expressions
 TMPFILE=$(mktemp) || { echo "ERROR: could not create temporary file."; exit 1; }
-trap "rm -f $TMPFILE" 0 1 2 3 15
+trap "rm -f $TMPFILE" 0
 cat > "$TMPFILE" << EOAdressen
 %%%% correct IP adresses (version 4 and 6) %%%%
 0.0.0.0
