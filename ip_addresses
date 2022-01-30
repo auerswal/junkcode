@@ -744,6 +744,8 @@ FF02::/16
 0:0:0:a::
 0:0:0:b::
 0:0:0:c::
+2a03:2880:f10e:83:face:b00c:0:25de
+2606:2800:220:1:248:1893:25c8:1946
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
