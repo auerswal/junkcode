@@ -18,7 +18,7 @@
 
 # This is a simple Awk based Unix filter.
 # Input is read from files given as command line arguments, or standard input.
-# Only non-negative integral time durations can be converted.
+# Only non-negative time durations can be converted.
 # Each input line is expected to comprise exactly one time duration value.
 # A time duration value must either be a unitless number of seconds, or
 #  a value in DHMS format (zero valued units can be omitted).
@@ -35,7 +35,7 @@ BEGIN {
 function dhms_to_secs(dhms) {
         gsub(/[[:space:]]+/, "", dhms)                  # remove whitespace
         val_cnt = split(dhms, vals, "[a-z]+")           # last field is empty
-        unit_cnt = split(dhms, units, "[0-9]+")         # first field is empty
+        unit_cnt = split(dhms, units, "[0-9.]+")        # first field is empty
         if (val_cnt != unit_cnt) {
                 print progname": Error:" \
                       " number of values differs from number of units:" \
@@ -75,11 +75,11 @@ function secs_to_dhms(secs) {
 {
         $0 = tolower($0)      # convert to lower case before checking patterns
 }
-/^[[:space:]]*[0-9]+[[:space:]]*$/ {
+/^[[:space:]]*([0-9]+\.?[0-9]*|[0-9]*\.?[0-9]+)[[:space:]]*$/ {
         print secs_to_dhms($0)
         next                  # no need to check further patterns
 }
-/^[[:space:]]*([0-9]+[[:space:]]*(d(ay)?|h(our)?|m(in(ute)?)?|s(ec(ond)?)?)s?[[:space:]]*){1,4}[[:space:]]*$/ {
+/^[[:space:]]*(([0-9]+\.?[0-9]*|[0-9]*\.?[0-9]+)[[:space:]]*(d(ay)?|h(our)?|m(in(ute)?)?|s(ec(ond)?)?)s?[[:space:]]*){1,4}[[:space:]]*$/ {
         secs = dhms_to_secs($0)
         if (secs >= 0) print secs                       # on error, secs == -1
 }
