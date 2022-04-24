@@ -34,7 +34,7 @@ BEGIN {
 
 function dhms_to_secs(dhms) {
         gsub(/[[:space:]]+/, "", dhms)                  # remove whitespace
-        val_cnt = split(dhms, vals, "[a-z]+")           # last field is empty
+        val_cnt = split(dhms, vals, "[a-z,]+")          # last field is empty
         unit_cnt = split(dhms, units, "[0-9.,]+")       # first field is empty
         if (val_cnt != unit_cnt) {
                 print progname": Error:" \
@@ -79,7 +79,7 @@ function secs_to_dhms(secs) {
         print secs_to_dhms($0)
         next                  # no need to check further patterns
 }
-/^[[:space:]]*(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[[:space:]]*(d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[[:space:]]*)+[[:space:]]*$/ {
+/^[[:space:]]*(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[[:space:]]*(d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,[:space:]]*)+[[:space:]]*$/ {
         secs = dhms_to_secs($0)
         if (secs >= 0) print secs                       # on error, secs == -1
 }
