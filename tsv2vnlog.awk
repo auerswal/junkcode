@@ -27,6 +27,10 @@
 #   that appear here are referenced by all the tools.
 # - Empty fields reported as -
 #
+# I have opened an issue to ask for clarification of some corner cases:
+# <https://github.com/dkogan/vnlog/issues/6>
+# Both tsv2vnlog.awk and vnlog2tsv.awk script are based on my assumptions.
+#
 # Emails sent to the bug-datamash@gnu.org mailing list suggest that in
 # in-line comments are part of the format in addition to comment lines.
 #
