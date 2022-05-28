@@ -31,7 +31,7 @@
 # <https://github.com/dkogan/vnlog/issues/6>
 # Both tsv2vnlog.awk and vnlog2tsv.awk script are based on my assumptions.
 #
-# Emails sent to the bug-datamash@gnu.org mailing list suggest that in
+# Emails sent to the bug-datamash@gnu.org mailing list suggest that
 # in-line comments are part of the format in addition to comment lines.
 #
 # I assume that both leading and trailing whitespace shall be ignored,
@@ -74,7 +74,7 @@
 # GNU datamash needs to be provided with an option to output a header
 # line.
 #
-# With the option -h, --headers, GNU datamash both reads and writes a
+# With the option -H, --headers, GNU datamash both reads and writes a
 # header line.
 
 # lines starting with optional whitespace followed by "##" or "#!" are

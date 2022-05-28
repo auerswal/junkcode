@@ -31,7 +31,7 @@
 # <https://github.com/dkogan/vnlog/issues/6>
 # Both tsv2vnlog.awk and vnlog2tsv.awk script are based on my assumptions.
 #
-# Emails sent to the bug-datamash@gnu.org mailing list suggest that in
+# Emails sent to the bug-datamash@gnu.org mailing list suggest that
 # in-line comments are part of the format in addition to comment lines.
 #
 # Handling of blank lines is not specified.
@@ -43,7 +43,7 @@
 #
 # GNU datamash does not create vnlog compatible output.  In order to
 # create the vnlog "legend", GNU datamash needs to write a header line.
-# With the option -h, --headers, GNU datamash both reads and writes a
+# With the option -H, --headers, GNU datamash both reads and writes a
 # header line.
 #
 # This script assumes that the first line is this header line and
