@@ -88,6 +88,7 @@ function humanize(number) {
             return number/units[j] suffix[j]
         }
     }
+    return number
 }
 
 {
