@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #   wf - write STDIN to a file (this is a wrapper around tee)
-#   Copyright (C) 2021  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
+#   Copyright (C) 2021-2022  Erik Auerswald <auerswal@unix-ag.uni-kl.de>
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -15,5 +15,17 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# For motivation see, e.g., the following mailing list posts:
+#  - s. https://lists.gnu.org/archive/html/coreutils/2020-12/msg00037.html
+#  - s. https://lists.gnu.org/archive/html/coreutils/2021-01/msg00031.html
+#  - s. https://lists.gnu.org/archive/html/coreutils/2021-01/msg00067.html
+#
+# Alternatives to using "tee >/dev/null" that also work with "sudo":
+#  - sh -c 'exec cat > FILENAME'
+#  - dd status=none of=FILENAME
+#
+# For a free software implementation of the general idea in C see "sponge"
+# from "moreutils" <https://joeyh.name/code/moreutils/>.
 
 exec tee >/dev/null "$@"
