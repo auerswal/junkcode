@@ -27,5 +27,9 @@
 #
 # For a free software implementation of the general idea in C see "sponge"
 # from "moreutils" <https://joeyh.name/code/moreutils/>.
+#
+# This implementation does not use the option terminator "--" in order to
+# allow, e.g., using "-a" to append data.  Thus "wf" supports all options
+# of "tee" (see, e.g., "man tee" or "info '(coreutils) tee invocation'").
 
 exec tee >/dev/null "$@"
