@@ -94,6 +94,7 @@
 /^[[:space:]]*#/ && !have_legend {
     have_legend = 1
     sub(/^[[:space:]]*#[[:space:]]*/, "")   # adjust legend (header) format
+    # continue processing as a data line to adjust to GNU datamash's format
 }
 
 # other lines are data lines; syntactically, for GNU datamash, even the
