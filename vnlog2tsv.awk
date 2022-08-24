@@ -33,17 +33,26 @@
 #
 # Emails sent to the bug-datamash@gnu.org mailing list suggest that
 # in-line comments are part of the format in addition to comment lines.
+# A comment in the GitHub issue mentioned above seems to indicate that
+# this assumption only holds for data lines, not the legend (header line).
 #
 # I assume that both leading and trailing whitespace shall be ignored,
-# because Awk works this way.
+# because field splitting in Awk works this way.
 #
 # Handling of blank lines is not specified.  For this script I assume
 # that they are intended to be ignored similar to comment lines.
 #
-# I assume that legend fields must not be empty, i.e., using "-" to
-# denote an empty field may be used for data lines only.  This script
-# does not enforce or even check this.  It always treats "-" as an
-# empty field.
+# I had assumed that legend fields must not be empty, i.e., using '-'
+# to denote an empty field may be used for data lines only.  This
+# script does not enforce or even check this.
+#
+# I had also assumed that every non-comment input line could have
+# trailing comments.
+#
+# It seems as if the two assumptions above have been wrong, i.e, they
+# do not hold for the legend (header line).  Thus I have adjusted this
+# script to keep all fields from the legend, i.e., to just remove the
+# single leading '#' character including optional surrounding whitespace.
 #
 # In order to use vnlog data as input to GNU datamash, it needs to be
 # converted to a format understood by GNU datamash.  GNU datamash
@@ -55,7 +64,7 @@
 # but it does not support in-line comments.  Contrary to vnlog, GNU
 # datamash also treats lines starting with a semicolon (';') as
 # comments.  GNU datamash does not distinguish between comment lines
-# before the "legend" or "header" line and after, either.  Thus the
+# before the "legend" or "header line" and after, either.  Thus the
 # comment handling of GNU datamash is incompatible with vnlog.
 # Therefore this script removes all comments from the vnlog input.
 #
@@ -77,34 +86,37 @@
 # With the option -H, --headers, GNU datamash both reads and writes a
 # header line.
 
-# lines starting with optional whitespace followed by "##" or "#!" are
-# always comments in vnlog
+# Lines starting with optional whitespace followed by "##" or "#!" are
+# always comments in vnlog.
 /^[[:space:]]*#[#!]/ { next }               # skip comment line
 
-# lines starting with optional whitespace followed by "#" are comments,
-# but only after the vnlog "legend"
+# Lines starting with optional whitespace followed by "#" are comments,
+# but only after the vnlog "legend".
 /^[[:space:]]*#/ && have_legend { next }    # skip comment line
 
 # I would expect blank lines to be ignored, but the specification does
-# not mention them
+# not mention them.
 /^[[:space:]]*$/ { next }                   # skip blank lines
 
-# the first line starting with optional whitespace followed by "#" is
-# the vnlog "legend" (same function as header line in GNU datamash)
+# The first line starting with optional whitespace followed by "#" is
+# the vnlog "legend" (similar in function to a header line in GNU datamash).
+# The legend has no trailing comments and no empty fields.
 /^[[:space:]]*#/ && !have_legend {
     have_legend = 1
     sub(/^[[:space:]]*#[[:space:]]*/, "")   # adjust legend (header) format
-    # continue processing as a data line to adjust to GNU datamash's format
+    gsub(/[[:space:]]+/, "\t")              # convert field separators
+    print                                   # emit modified header line
+    next                                    # stop processing this line
 }
 
-# other lines are data lines; syntactically, for GNU datamash, even the
-# "legend" is a data line
+# Other lines are data lines; syntactically, for GNU datamash, even the
+# "legend" is a data line:
 # - data lines can have in-line comments starting with "#" and extending
-#   to the end of the line
+#   to the end of the line;
 # - vnlog uses whitespace (one or more space or tabulator characters) as
-#   field separator
-# - vnlog uses "-" to represent an empty field
-# - trailing whitespace is ignored
+#   field separator;
+# - vnlog uses "-" to represent an empty field;
+# - trailing whitespace is ignored.
 {
     sub(/^[[:space:]]+/, "")                # remove leading whitespace
     sub(/[[:space:]]*#.*$/, "")             # remove in-line comments
@@ -115,5 +127,5 @@
     }
     sub(/^-\t/, "\t")                       # convert empty first field
     sub(/\t-$/, "\t")                       # convert empty last field
-    print
+    print                                   # emit modified data line
 }
