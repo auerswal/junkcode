@@ -52,16 +52,24 @@
 # To avoid ambiguities, a single space is used between fields in the
 # vnlog conforming format created by this script.
 
-# change first line (the header) into a vnlog legend
+# Change first line (the header) into a vnlog legend.  This just
+# changes the contents of the first field of the first line of the
+# TSV format data.  Further transformations from TSV to vnlog, i.e.,
+# replacing each Tab with a Space and replacing empty fields with a
+# Hyphen is done afterwards together with vnlog data line transformation.
 NR == 1 { sub(/^/, "# ") }
 
-# convert line format
+# Convert line format from TSV to vnlog (every line including the first).
 {
     sub(/^\t/, "-\t")          # possibly empty first field
     sub(/\t$/, "\t-")          # possibly empty last field
     while ($0 ~ /\t\t/) {
         gsub(/\t\t/, "\t-\t")  # possibly empty inner fields
     }
+
+    # Replacing Tab characters with Space character is not required, but
+    # I prefer it this way.
     gsub(/\t/, " ")            # use space instead of tab between fields
-    print
+
+    print                      # emit vnlog format (legend or data) line
 }
