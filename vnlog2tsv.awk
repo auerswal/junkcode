@@ -54,6 +54,10 @@
 # script to keep all fields from the legend, i.e., to just remove the
 # single leading '#' character including optional surrounding whitespace.
 #
+# The GNU Datamash code to support vnlog data suggests that even before
+# the legend is found, any line comprising a single '#' with optional
+# surrounding whitespace is ignored as an empty comment.
+#
 # In order to use vnlog data as input to GNU datamash, it needs to be
 # converted to a format understood by GNU datamash.  GNU datamash
 # supports a simple TSV format where each TAB character separates two
@@ -89,6 +93,10 @@
 # Lines starting with optional whitespace followed by "##" or "#!" are
 # always comments in vnlog.
 /^[[:space:]]*#[#!]/ { next }               # skip comment line
+
+# Lines comprising a single "#" with optional leading and/or trailing
+# whitespace are always (empty) comments in vnlog.
+/^[[:space:]]*#[[:space:]]*$/ { next }      # skip empty comment line
 
 # Lines starting with optional whitespace followed by "#" are comments,
 # but only after the vnlog "legend".
