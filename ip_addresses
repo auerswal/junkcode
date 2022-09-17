@@ -51,7 +51,14 @@ IPv6_quad6="([[:xdigit:]]{1,4}:){5}:${dot_quad}"
 # i.e., ff00::/8, fe80::/10, and fec0/10 (fe80/9)
 # link-local includes FE80::/10, not just FE80::/64
 IPv6_zone_pre='(([fF]{2}[[:xdigit:]]{2})|([fF][eE][89ABCDEFabcdef][[:xdigit:]]))'
-# zone IDs are arbitrary character strings
+# According to RFC 4007, zone IDs are arbitrary character strings that do not
+# "conflict" with the delimiter character.  The delimiter is the '%' character.
+# Since the first '%' character from the left must be the zone ID delimiter,
+# one can view additional '%' characters as non-conflicting.  While a zone ID
+# ending in a slash ('/') and a number is potentially "conflicting" with CIDR
+# notation, it is also used, e.g., in Cisco IOS.  Thus zone ID support is quite
+# problematic and not perfect here.  Some of the examples for "wrong" IPv6
+# addresses could be accepted a "valid" IPv6 address with a zone ID.
 IPv6_zone_id='%(([^/][^%]*)|(/[^%]*[^0-9%][^%]*))'
 IPv6_z_l='([[:xdigit:]]{1,4}:){6}[[:xdigit:]]{1,4}'
 IPv6_z_s0='::(([[:xdigit:]]{1,4}:){0,5}[[:xdigit:]]{1,4})?'
@@ -320,11 +327,24 @@ ff02::5678%5
 ff02::5678%pvc1.3
 ff08::9abc%10
 ff08::9abc%interface10
+ff08::9abc%enp0s29u1u1c4i2
+ff08::9abc%vlan4@ens224
+ff08::9abc%eth0:1
+ff08::9abc%eth0.47:1
 fe80::1234%1
 fe80::1234%ne0
 fe80::2%3
 fe80::%2/64
+fe80::%a/64
+fe80::%z/64
 FE80::C801:1AFF:FE97:8%FastEthernet0/0
+FE80::C801:1AFF:FE97:8%FastEthernet0/0.123
+FE80::C801:1AFF:FE97:8%FastEthernet0/0/64
+FE80::C801:1AFF:FE97:8%FastEthernet0/0.123/64
+FE80::C801:1AFF:FE97:8%f0/0
+FE80::C801:1AFF:FE97:8%f0/0.123
+FE80::C801:1AFF:FE97:8%f0/0/64
+FE80::C801:1AFF:FE97:8%f0/0.123/64
 fe80::5efe:192.168.41.30%10
 fe80::206:5bff:fe30:bbd2%eth0
 fe80::206:5bff:fe30:bbd2%12
@@ -742,9 +762,13 @@ FF02::/16
 0:0:0:c::
 2a03:2880:f10e:83:face:b00c:0:25de
 2606:2800:220:1:248:1893:25c8:1946
+fe80::abcd%0
+fe80::abcd%1
 fe80::abcd%en1
+fe80::abcd%eth0
 fe80::abcd%25
 fe80::abcd%25en1
+fe80::abcd%25xy
 10.1.2.3
 10.1.2.4
 169.254.13.78
