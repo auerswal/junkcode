@@ -89,7 +89,8 @@ except StopIteration:
     print('⇒ Caught "StopIteration" exception')
 print('⇒ gen3 is gen3.__iter__() ==', gen3 is gen3.__iter__())
 
-# the built-in function next() can be used instead of calling the
+# the built-in function next() can be used instead of calling the generator
+# object's .__next__() method manually
 gen4 = g1()
 print('⇒ Iteration over gen4 using next(gen4):')
 print(next(gen4))
