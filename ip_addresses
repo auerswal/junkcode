@@ -998,6 +998,7 @@ v6.fe80::abcd_en1
 http://[fe80::abcd%25en1]
 ff00:1
 S1:aa08::4450
+:::1/128
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
