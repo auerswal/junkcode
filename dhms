@@ -30,6 +30,10 @@
 
 BEGIN {
         progname = "dhms"                  # used as prefix for error messages
+        unit_factors["d"] = 24 * 60 * 60   # seconds per day
+        unit_factors["h"] = 60 * 60        # seconds per hour
+        unit_factors["m"] = 60             # seconds per minute
+        unit_factors["s"] = 1              # seconds per second
 }
 
 function dhms_to_secs(dhms) {
@@ -44,15 +48,9 @@ function dhms_to_secs(dhms) {
         }
         secs = 0
         for (i = 1; i < val_cnt; i++) {
-                unit = substr(units[i+1], 1, 1)
-                if (unit == "d") {
-                        secs += vals[i] * 86400
-                } else if (unit == "h") {
-                        secs += vals[i] * 3600
-                } else if (unit == "m") {
-                        secs += vals[i] * 60
-                } else if (unit == "s") {
-                        secs += vals[i]
+                factor = unit_factors[substr(units[i+1], 1, 1)]
+                if (factor) {
+                        secs += vals[i] * factor
                 } else {
                         print progname": Error: unknown unit "units[i] \
                               > "/dev/stderr"
