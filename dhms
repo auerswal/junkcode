@@ -46,6 +46,7 @@ function dhms_to_secs(dhms) {
                       " val_cnt=" val_cnt " unit_cnt=" unit_cnt > "/dev/stderr"
                 return -1
         }
+        secs = 0             # reset sum for each dhms ---> seconds conversion
         for (i = 1; i < val_cnt; i++) {
                 factor = unit_factors[substr(units[i+1], 1, 1)]
                 if (factor) {
