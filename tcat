@@ -42,6 +42,7 @@
 # as delimiting multiple fields, if the field separator is set to a non-default
 # value (using option "-F <value>" or "-v FS=<value>"). To allow merging of
 # adjacent delimiters, a regular expression can be used (e.g., -F '\t+').
+# The "-n" option to Debian's "column" fork inhibits adjacent delimiter merging.
 #
 # For input files where one or more TAB characters separate fields, the
 # following invocations of "column" respectivly "tcat" produce similar output:
