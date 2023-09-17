@@ -29,11 +29,12 @@
 #  time duration value in the other format.
 
 BEGIN {
-        progname = "dhms"                  # used as prefix for error messages
-        unit_factors["d"] = 24 * 60 * 60   # seconds per day
-        unit_factors["h"] = 60 * 60        # seconds per hour
-        unit_factors["m"] = 60             # seconds per minute
-        unit_factors["s"] = 1              # seconds per second
+        progname = "dhms"                    # used as prefix for error messages
+        unit_factors["w"] = 7 * 24 * 60 * 60 # seconds per week
+        unit_factors["d"] = 24 * 60 * 60     # seconds per day
+        unit_factors["h"] = 60 * 60          # seconds per hour
+        unit_factors["m"] = 60               # seconds per minute
+        unit_factors["s"] = 1                # seconds per second
 }
 
 function dhms_to_secs(dhms) {
@@ -77,7 +78,7 @@ function secs_to_dhms(secs) {
         print secs_to_dhms($0)
         next                  # no need to check further patterns
 }
-/^[[:space:]]*(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[[:space:]]*(d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,:[:space:]]*)+[[:space:]]*$/ {
+/^[[:space:]]*(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[[:space:]]*(w(eek)?|d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,:[:space:]]*)+[[:space:]]*$/ {
         secs = dhms_to_secs($0)
         if (secs >= 0) print secs                       # on error, secs == -1
 }
