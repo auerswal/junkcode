@@ -810,6 +810,10 @@ ff00::1
 fe80::1%lo0
 fe80::1234%eth0
 2607:f8b0:4002:c03::64
+192.168.178.1
+fe80::1%eth0
+fe80::4321%7
+fe80::823b:f9ff:fe7b:d9dc%10
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1015,6 +1019,7 @@ S1:aa08::4450
 [fe80::1234%eth0]
 [fe80::1%lo0]:53
 [::1]:53
+fe80::1-eth0
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
