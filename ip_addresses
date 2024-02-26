@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #   ip_addresses - print tight regular expressions for IPv4 and IPv6 addresses
-#   Copyright (C) 2018-2022  Erik Auerswald
+#   Copyright (C) 2018-2024  Erik Auerswald
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -818,6 +818,7 @@ fe80::fae4:e3ff:fee2:37a4%eth0
 ::127.0.0.1
 fe80::1ff:fe23:4567:890a%3
 fe80::a%TenGigabitEthernet1/2/3
+fd00:ab:cd::1
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
