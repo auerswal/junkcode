@@ -819,6 +819,7 @@ fe80::fae4:e3ff:fee2:37a4%eth0
 fe80::1ff:fe23:4567:890a%3
 fe80::a%TenGigabitEthernet1/2/3
 fd00:ab:cd::1
+fe80::8d0f:7f26:f5c8:780b%enx525400d5e0fb
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
