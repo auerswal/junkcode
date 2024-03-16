@@ -1070,6 +1070,7 @@ fe80::1-eth0
 FD01:0203:0405
 FD01:0203:0405:/48
 FD01:4444:5555:/48
+::ffff:0:a.b.c.d
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
