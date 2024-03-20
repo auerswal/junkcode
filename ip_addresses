@@ -857,6 +857,10 @@ FD01:4444:5555::/48
 2001:db8:aaaa::/96
 2001:db8:1234::198.51.100.1
 2001:db8:aaaa::192.168.1.2
+fe80::1%name
+fe80::1%wlp0s20f3
+fe80::a8c1:abff:feb4:ab82%Et1
+fe80::a8c1:abff:fe18:8133%Et2
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
