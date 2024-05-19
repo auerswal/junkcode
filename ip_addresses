@@ -861,6 +861,7 @@ fe80::1%name
 fe80::1%wlp0s20f3
 fe80::a8c1:abff:feb4:ab82%Et1
 fe80::a8c1:abff:fe18:8133%Et2
+0f00::/8
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1075,6 +1076,7 @@ FD01:0203:0405
 FD01:0203:0405:/48
 FD01:4444:5555:/48
 ::ffff:0:a.b.c.d
+0f00:/8
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
