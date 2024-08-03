@@ -1087,6 +1087,7 @@ FD01:4444:5555:/48
 1:2:3:N::/64
 1:2:3:N:F0::/72
 2001:TBD::/28
+TBD::/N
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
