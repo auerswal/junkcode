@@ -1093,6 +1093,12 @@ FD01:4444:5555:/48
 1:2:3:N:F0::/72
 2001:TBD::/28
 TBD::/N
+20010DB80000CD3
+20010db80000cd3
+0x20010DB80000CD3
+0x20010db80000cd3
+20010DB80000CD3h
+20010db80000cd3h
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
