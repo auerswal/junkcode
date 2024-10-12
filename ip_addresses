@@ -1156,6 +1156,11 @@ zzzz
 55.66.77/24
 55.66.77.0/35
 fc00:/8
+2001:db8::/32,64
+2001:db8::/64,128
+2001:db8:89ab::/48,48
+2001:db8:1234::/64,128
+2001:db8:abcd::/64,128
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
