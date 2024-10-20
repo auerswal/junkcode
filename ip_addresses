@@ -916,6 +916,7 @@ fe00::/48
 2620:f:8000::/48
 ::0/0
 fc00::/8
+::ffff:1.2.3.4
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
