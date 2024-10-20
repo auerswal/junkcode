@@ -917,6 +917,8 @@ fe00::/48
 ::0/0
 fc00::/8
 ::ffff:1.2.3.4
+192.0.2.0/32
+2001:db8::/128
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1162,6 +1164,10 @@ fc00:/8
 2001:db8:89ab::/48,48
 2001:db8:1234::/64,128
 2001:db8:abcd::/64,128
+192.0.2.0/24-24
+192.0.2.0/24-32
+2001:db8::/32-32
+2001:db8::/32-128
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
