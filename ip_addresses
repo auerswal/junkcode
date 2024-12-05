@@ -1185,6 +1185,7 @@ fc00:/8
 fe80::\$prefix
 208.0.16-31
 0xFFFFF000
+Pref64::/n
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
