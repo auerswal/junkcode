@@ -932,6 +932,29 @@ fd7a:4321::1/64
 fe80::2001:db8:cafe:beef
 208.0.0.0
 208.0.15.255
+2001:db8:1234:5678::90ab:cdef
+2001:db8:1234:5678::/64
+2001:db8:1337:2::
+2001:db8:1337:25::
+2001:db8:1337:2::/64
+2001:DB8:1337:2::1/64
+2001:DB8:1337::53
+2001:db8:1337:2::1/64
+2001:db8:1337::53
+fe80::f2ca:deff:fede:ad00%en0
+2001:db8:1337:2:f2ca:deff:fede:ad00
+2001:db8:1337:2:cafe:babe:8bad:f00d
+2001:db8:1337:2::42:0/64
+2600::1
+2001:db8:1337:2::6
+203.0.113.4
+2001:db8:1337:624::1
+64:ff9b::ac40:97c0
+64:ff9b::0/96
+64:ff9b::808:808
+192.0.0.1
+192.0.0.2
+2001:db8:1337:2:7ac7:1e55:dead:d00d
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1186,6 +1209,11 @@ fe80::\$prefix
 208.0.16-31
 0xFFFFF000
 Pref64::/n
+2001:0db8:1234:5678:0000:90ab:cdef
+2001:db8:NNNN
+2001:db8:1337:SSSS::H
+10.SSS.SSS.H
+2001:db8:1337:VVV::
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
