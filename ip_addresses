@@ -1214,6 +1214,7 @@ Pref64::/n
 2001:db8:1337:SSSS::H
 10.SSS.SSS.H
 2001:db8:1337:VVV::
+2001:db8::/32AS64496
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
