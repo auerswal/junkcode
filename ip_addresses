@@ -1232,6 +1232,9 @@ Pref64::/n
 192.168.1.34%eth1
 2a02:a420::x
 Pref64::WKA
+2001:db8::%eth0
+2001:db8::%eth0/64
+IPv6%zone
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
