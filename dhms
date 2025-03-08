@@ -1,7 +1,7 @@
 #! /usr/bin/awk -f
 
 # dhms - convert time durations between seconds and days/hours/minutes/seconds.
-# Copyright (C) 2022-2023 Erik Auerswald <auerswal@unix-ag.uni-kl.de>
+# Copyright (C) 2022-2025 Erik Auerswald <auerswal@unix-ag.uni-kl.de>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ BEGIN {
 }
 
 function dhms_to_secs(dhms) {
-        gsub(/[:[:space:]]+/, "", dhms)                 # remove separators
+        gsub(/[-:[:space:]]+/, "", dhms)                 # remove separators
         val_cnt = split(dhms, vals, "[a-z,]+")          # last field is empty
         unit_cnt = split(dhms, units, "[0-9.,]+")       # first field is empty
         if (val_cnt != unit_cnt) {
@@ -78,7 +78,7 @@ function secs_to_dhms(secs) {
         print secs_to_dhms($0)
         next                  # no need to check further patterns
 }
-/^[[:space:]]*(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[[:space:]]*(w(eek)?|d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,:[:space:]]*)+[[:space:]]*$/ {
+/^[[:space:]]*(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[-[:space:]]*(w(eek)?|d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,:[:space:]]*( +and +)?)+[[:space:]]*$/ {
         secs = dhms_to_secs($0)
         if (secs >= 0) print secs                       # on error, secs == -1
 }
