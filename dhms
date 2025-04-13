@@ -71,6 +71,9 @@ function secs_to_dhms(secs) {
         return days"d"hours"h"minutes"m"secs"s"
 }
 
+/^[[:space:]]*PT([0-9]+H)?([0-9]+M)?([0-9]+(\.[0-9]+)?S)?[[:space:]]*$/ {
+        $0 = substr($0, 3)    # accept draft-tsai-duration-00 values
+}
 {
         $0 = tolower($0)      # convert to lower case before checking patterns
 }
