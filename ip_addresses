@@ -969,6 +969,10 @@ fe80::f2ca:deff:fede:ad00%en0
 192.0.0.171/32
 2001:db8:0:0:0:0:C000:00AA
 2001:db8:0:0:0:0:C000:00AB
+fd5c:6bc1:7bc7:ffff::/64
+fd5c:6bc1:7bc7:ffff:ffff:ffff::/96
+fd5c:6bc1:7bc7:ffff:ffff:ffff:192.168.100.211
+fd5c:6bc1:7bc7:ffff:ffff:ffff:c0a8:64d3
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1235,6 +1239,8 @@ Pref64::WKA
 2001:db8::%eth0
 2001:db8::%eth0/64
 IPv6%zone
+64:ff9b:X
+Pref64:X
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
