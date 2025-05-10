@@ -989,6 +989,7 @@ fe80::a1b3:6d7a:3f65:dd13%eth0
 fe80::a1b3:6d7a:3f65:dd13%7
 ::ffff:192.0.2.123
 0:0:0:0:0:ffff::/96
+2001:db8::/64
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1265,6 +1266,12 @@ https://[2001:db8:4006:80b::200e]:443
 fd63:45eb:dc14:1/64
 P::/128
 ::ffff::/96
+192.0.2.1:80
+http://[2001:db8::1]:80
+[2001:db8::]/64
+[2001:db8::/64]
+[IPv6:2001:db8::1]
+239/8
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
