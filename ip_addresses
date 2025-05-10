@@ -976,6 +976,19 @@ fd5c:6bc1:7bc7:ffff:ffff:ffff:c0a8:64d3
 fd5c:6bc1:7bc7:ffff::1/64
 fd5c:6bc1:7bc7:ffff::20/64
 2001:638:1234::1/128
+2001:0db8:ef01:2345:6789:abcd:ef01:2345
+2001:db8:ef01:45:6789:abcd:ef01:2345
+2001:db8::6789:abcd:ef01:2345
+2001:db8:0:0:6789:abcd:ef01:2345
+2001:db8:4006:80b::cafe
+2001:db8:4006:80b:a1b3:6d7a:3f65:dd13
+fd63:45eb:dc14:1:a1b3:6d7a:3f65:dd13
+fd63:45eb:dc14::/48
+fd63:45eb:dc14:1::/64
+fe80::a1b3:6d7a:3f65:dd13%eth0
+fe80::a1b3:6d7a:3f65:dd13%7
+::ffff:192.0.2.123
+0:0:0:0:0:ffff::/96
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1245,6 +1258,13 @@ IPv6%zone
 64:ff9b:X
 Pref64:X
 2001:638.1234::1/128
+0x20010db8ef0123456789abcdef012345
+https://[2001:db8:4006:80b::200e]:443
+2001:db8/32
+2001:db8:4006:80b/64
+fd63:45eb:dc14:1/64
+P::/128
+::ffff::/96
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
