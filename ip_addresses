@@ -1272,6 +1272,18 @@ http://[2001:db8::1]:80
 [2001:db8::/64]
 [IPv6:2001:db8::1]
 239/8
+$known_local/48
+GUA1::1::1
+GUA1:1::1
+GUA1:2::1
+GUA1::/48
+GUA2:1::1
+ULA1::1
+ULA1::/48
+ULA2::1
+ULA2::/48
+ULA3::1
+ULA3::/48
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
