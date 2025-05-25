@@ -77,6 +77,12 @@ function secs_to_dhms(secs) {
         sub(/[[:space:]]+$/, "")        # remove trailing whitespace
 }
 
+# allow leading "uptime is" and trailing "ago" by removing from input
+{
+        sub(/^uptime[[:space:]]+is[[:space:]]+/, "")
+        sub(/[[:space:]]+ago$/, "")
+}
+
 # number without unit is interpreted as seconds and converted to "dhms" format
 /^([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)$/ {
         print secs_to_dhms($0)
@@ -112,7 +118,7 @@ function secs_to_dhms(secs) {
 }
 
 # numbers with units are interpreted as generalized "dhms" values
-/^(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[-[:space:]]*(w(eek)?|d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,:[:space:]]*( +and +)?)+([[:space:]]+ago)?$/ {
+/^(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[-[:space:]]*(w(eek)?|d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,:[:space:]]*( +and +)?)+$/ {
         secs = dhms_to_secs($0)
         if (secs >= 0) print secs                       # on error, secs == -1
 }
