@@ -71,8 +71,14 @@ function secs_to_dhms(secs) {
         return days"d"hours"h"minutes"m"secs"s"
 }
 
+# remove leading and trailing whitespace to simplify further patterns
+{
+        sub(/^[[:space:]]+/, "")        # remove leading whitespace
+        sub(/[[:space:]]+$/, "")        # remove trailing whitespace
+}
+
 # number without unit is interpreted as seconds and converted to "dhms" format
-/^[[:space:]]*([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[[:space:]]*$/ {
+/^([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)$/ {
         print secs_to_dhms($0)
         next                  # do not check further patterns
 }
@@ -80,7 +86,7 @@ function secs_to_dhms(secs) {
 # convert draft-tsai-duration-00 values to "hms" format by dropping "PT" prefix
 # the format is defined with upper case only, so check for this format before
 # conversion to lower case
-/^[[:space:]]*PT([0-9]+H)?([0-9]+M)?([0-9]+(\.[0-9]+)?S)?[[:space:]]*$/ {
+/^PT([0-9]+H)?([0-9]+M)?([0-9]+(\.[0-9]+)?S)?$/ {
         sub(/^[[:space:]]*PT/, "") # dropping PT prefix leaves an HMS value
 }
 
@@ -91,7 +97,7 @@ function secs_to_dhms(secs) {
 }
 
 # numbers with units are interpreted as generalized "dhms" values
-/^[[:space:]]*(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[-[:space:]]*(w(eek)?|d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,:[:space:]]*( +and +)?)+[[:space:]]*$/ {
+/^(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[-[:space:]]*(w(eek)?|d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,:[:space:]]*( +and +)?)+$/ {
         secs = dhms_to_secs($0)
         if (secs >= 0) print secs                       # on error, secs == -1
 }
