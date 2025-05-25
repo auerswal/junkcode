@@ -118,7 +118,7 @@ function secs_to_dhms(secs) {
 }
 
 # numbers with units are interpreted as generalized "dhms" values
-/^(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[-[:space:]]*(w(eek)?|d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,:[:space:]]*( +and +)?)+$/ {
+/^(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[-[:space:]]*(w(eek)?|d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,:[:space:]]*([[:space:]]+and[[:space:]]+)?)+$/ {
         secs = dhms_to_secs($0)
         if (secs >= 0) print secs                       # on error, secs == -1
 }
