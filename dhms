@@ -78,10 +78,10 @@ function secs_to_dhms(secs) {
 }
 
 # convert draft-tsai-duration-00 values to "hms" format by dropping "PT" prefix
-# the format is defined with upper case only, so check this before conversion
-# to lower case
+# the format is defined with upper case only, so check for this format before
+# conversion to lower case
 /^[[:space:]]*PT([0-9]+H)?([0-9]+M)?([0-9]+(\.[0-9]+)?S)?[[:space:]]*$/ {
-        $0 = substr($0, 3)    # drop PT prefix of draft-tsai-duration-00 values
+        sub(/^[[:space:]]*PT/, "") # dropping PT prefix leaves an HMS value
 }
 
 # convert to lower case before checking further patterns
