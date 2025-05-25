@@ -96,6 +96,11 @@ function secs_to_dhms(secs) {
         $0 = tolower($0)      # convert to lower case before checking patterns
 }
 
+# convert uptime value of Enterasys S-Series
+/^[0-9]+,[0-9]+:[0-9]{1,2}:[0-9]{1,2}$/ {
+        sub(/,/, "d")         # first number is days, HH:MM:SS handled below
+}
+
 # convert HH:MM:SS values to "hms" format with units
 /[0-9]+:[0-9]{1,2}:[0-9]{1,2}([.,][0-9]+)?/ {
         match($0, /[0-9]+:[0-9]{1,2}:[0-9]{1,2}([.,][0-9]+)?/)
