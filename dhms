@@ -96,6 +96,16 @@ function secs_to_dhms(secs) {
         $0 = tolower($0)      # convert to lower case before checking patterns
 }
 
+# convert HH:MM:SS values to "hms" format with units
+/[0-9]+:[0-9]{1,2}:[0-9]{1,2}([.,][0-9]+)?/ {
+        match($0, /[0-9]+:[0-9]{1,2}:[0-9]{1,2}([.,][0-9]+)?/)
+        prefix = substr($0, 1, RSTART - 1)
+        middle = substr($0, RSTART, RLENGTH)
+        suffix = substr($0, RSTART + RLENGTH)
+        split(middle, hms_values, /:/)
+        $0 = prefix hms_values[1]"h" hms_values[2]"m" hms_values[3]"s" suffix
+}
+
 # numbers with units are interpreted as generalized "dhms" values
 /^(([0-9]+[.,]?[0-9]*|[0-9]*[.,]?[0-9]+)[-[:space:]]*(w(eek)?|d(ay)?|h((ou)?r)?|m(in(ute)?)?|s(ec(ond)?)?)s?[,:[:space:]]*( +and +)?)+$/ {
         secs = dhms_to_secs($0)
