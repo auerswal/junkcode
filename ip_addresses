@@ -1287,6 +1287,7 @@ ULA3::/48
 192.0.2.0/24,24,4000
 192.0.2.0/24,32,1
 2001:db8::/32,56,1
+address%scope-id
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
