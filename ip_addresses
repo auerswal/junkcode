@@ -990,6 +990,11 @@ fe80::a1b3:6d7a:3f65:dd13%7
 ::ffff:192.0.2.123
 0:0:0:0:0:ffff::/96
 2001:db8::/64
+fcff:20e:70e:40e:50e:8d6::
+fcff:70e:40e:50e:8d6::
+fcff:40e:50e:8d6::
+fcff:50e:8d6::
+fcff:8d6::
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
