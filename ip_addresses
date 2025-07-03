@@ -995,6 +995,7 @@ fcff:70e:40e:50e:8d6::
 fcff:40e:50e:8d6::
 fcff:50e:8d6::
 fcff:8d6::
+232.0.0.0/8
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1293,6 +1294,8 @@ ULA3::/48
 192.0.2.0/24,32,1
 2001:db8::/32,56,1
 address%scope-id
+ff3x::/96
+ff3x::/32
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
