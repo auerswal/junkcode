@@ -1005,6 +1005,12 @@ fcff:8d6::
 2001:db8:abcd::/64
 2001:db8:abcd::4
 fe80::9436:b6a2:eebe:a1e1
+::ffff:12.34.56.78
+ab:cd::1.2.3.4
+1.2.2.0/24
+1.2.3.0/24
+1.2.2.0/23
+66.249.64.0/19
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1305,6 +1311,14 @@ ULA3::/48
 address%scope-id
 ff3x::/96
 ff3x::/32
+address:1234:56::78
+aa:bb:cc:dd
+a.b.c.d
+a.b.c.d-e.f.g.h
+a.b.c.d/xx
+aa:bb::cc:dd/xx
+192.168.0.1-192.168.10.13
+127.0.0.0/8,::1
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
