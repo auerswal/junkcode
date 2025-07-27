@@ -78,7 +78,7 @@ IPv6="(((${IPv6_long})|(${IPv6_short0})|(${IPv6_short1})|(${IPv6_short2})|(${IPv
 # test the regular expressions
 TMPFILE=$(mktemp) || { echo "ERROR: could not create temporary file."; exit 1; }
 trap "rm -f $TMPFILE" 0
-cat > "$TMPFILE" << EOAdressen
+cat > "$TMPFILE" << 'EOAdressen'
 %%%% correct IP adresses (version 4 and 6) %%%%
 0.0.0.0
 0.0.0.0/0
@@ -1011,6 +1011,8 @@ ab:cd::1.2.3.4
 1.2.3.0/24
 1.2.2.0/23
 66.249.64.0/19
+aa00::/8
+fa00::/8
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1261,7 +1263,7 @@ fc00:/8
 2001:db8::/32-32
 2001:db8::/32-128
 10:23:31:00:01:32:93/24
-fe80::\$prefix
+fe80::$prefix
 208.0.16-31
 0xFFFFF000
 Pref64::/n
