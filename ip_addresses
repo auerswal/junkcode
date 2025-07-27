@@ -1320,6 +1320,9 @@ aa:bb::cc:dd/xx
 192.168.0.1-192.168.10.13
 127.0.0.0/8,::1
 33:33:00:00:00:01
+01:80:C2:00:00:{03,0E}
+ff22:e00:e::<ALLOC>
+ff22:e00:3::<ALLOC>
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
