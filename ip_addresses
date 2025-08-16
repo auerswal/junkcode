@@ -1020,6 +1020,9 @@ ff22:e00:0::/96
 ff22:e00:3::1
 ff22:e00:e::1
 ff22:e00:3::2
+fec0:0:0:1::/64
+10.1.1.1
+fec0:0:0:1::10.1.1.1
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
