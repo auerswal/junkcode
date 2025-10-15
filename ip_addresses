@@ -1025,6 +1025,11 @@ fec0:0:0:1::/64
 fec0:0:0:1::10.1.1.1
 2401:4900:883b:611a:8f3:7115:c8ce:89fb
 192.168.0.10
+ff35:30:2001:db8:f1:0:8000:1
+FF35::/32
+1080:0:0:0:8:800:200C:417A
+1080::8:800:200C:417A
+10.1.0.23
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1341,6 +1346,13 @@ aa:bb::cc:dd/xx
 01:80:C2:00:00:{03,0E}
 ff22:e00:e::<ALLOC>
 ff22:e00:3::<ALLOC>
+FF1x::16
+FF1x::/16
+FF3x::/16
+x:x:x:x:x:x:x:x
+21932261930451111902915077091070067066
+4-68-70-46-66-12-63-31-61-19-4-37-53-75-0-58-57-65-34-51
+4)+k&C#VzJ4br>0wv%Yp
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
