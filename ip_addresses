@@ -1059,6 +1059,8 @@ FE80::0
 0100::5353
 1::/32
 ::ffff:127.0.53.53
+1:0:0:6::1/64
+1:0:0:7::1/64
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1396,6 +1398,14 @@ ffff:127.0.53.53
 2001:B::0a.0a.0a.0a
 [2001:B::C0A8:102]:21
 [2001:A::2]:21
+::ffff:a.b.c.d/96
+1:/32
+1:0:0:x::1/64
+loopback/127/8
+::1%loop0
+::1%loop1
+::1%lo
+::1%ZONEID
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
