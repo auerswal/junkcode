@@ -1420,6 +1420,19 @@ loopback/127/8
 http://[::]:8000
 [::53]:53
 2001:db8:
+.:
+[3f]:
+foo:
+.:hook1
+foo:hook1.hook2
+[d80]:hook1
+Frame1:uplink.dlci16
+Frame1:uplink.dlci20
+.:uplink
+uplink
+data
+mux.data
+Frame1:
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
