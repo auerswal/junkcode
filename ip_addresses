@@ -50,13 +50,7 @@ IPv6_quad6="([[:xdigit:]]{1,4}:){5}:${dot_quad}"
 # allow zone IDs for multicast, site-local, and link-local IPv6 addresses,
 # i.e., ff00::/8, fe80::/10, and fec0/10 (fe80/9)
 # link-local includes FE80::/10, not just FE80::/64
-# XXX BUG: the following link-local addresses are not accepted with zone ID,
-# XXX      they are accepted without it.
-# XXX fe80:35::1%lo
-# XXX fe80:0:0:0:35::1%lo
-# XXX fe80:0:0:0:35:0:0:1%lo
-# XXX fe80:0:0:0:0:35:0:1%lo
-IPv6_zone_pre='(([fF]{2}[[:xdigit:]]{2})|([fF][eE][89ABCDEFabcdef][[:xdigit:]]))'
+IPv6_zone_pre='(([fF]{2}[[:xdigit:]]{2})|([fF][eE][89ABCDEFabcdef][[:xdigit:]])):'
 # According to RFC 4007, zone IDs are arbitrary character strings that do not
 # "conflict" with the delimiter character.  The delimiter is the '%' character.
 # Since the first '%' character from the left must be the zone ID delimiter,
@@ -67,14 +61,14 @@ IPv6_zone_pre='(([fF]{2}[[:xdigit:]]{2})|([fF][eE][89ABCDEFabcdef][[:xdigit:]]))
 # addresses could be accepted a "valid" IPv6 address with a zone ID.
 IPv6_zone_id='%(([^/][^%]*)|(/[^%]*[^0-9%][^%]*))'
 IPv6_z_l='([[:xdigit:]]{1,4}:){6}[[:xdigit:]]{1,4}'
-IPv6_z_s0='::(([[:xdigit:]]{1,4}:){0,5}[[:xdigit:]]{1,4})?'
+IPv6_z_s0=':(([[:xdigit:]]{1,4}:){0,5}[[:xdigit:]]{1,4})?'
 IPv6_z_s1='[[:xdigit:]]{1,4}::(([[:xdigit:]]{1,4}:){0,4}[[:xdigit:]]{1,4})?'
 IPv6_z_s2='([[:xdigit:]]{1,4}:){2}:(([[:xdigit:]]{1,4}:){0,3}[[:xdigit:]]{1,4})?'
 IPv6_z_s3='([[:xdigit:]]{1,4}:){3}:(([[:xdigit:]]{1,4}:){0,2}[[:xdigit:]]{1,4})?'
 IPv6_z_s4='([[:xdigit:]]{1,4}:){4}:(([[:xdigit:]]{1,4}:){0,1}[[:xdigit:]]{1,4})?'
 IPv6_z_s5='([[:xdigit:]]{1,4}:){5}:([[:xdigit:]]{1,4})?'
 IPv6_z_q0="([[:xdigit:]]{1,4}:){5}${dot_quad}"
-IPv6_z_q1="::([[:xdigit:]]{1,4}:){0,4}${dot_quad}"
+IPv6_z_q1=":([[:xdigit:]]{1,4}:){0,4}${dot_quad}"
 IPv6_z_q2="[[:xdigit:]]{1,4}::([[:xdigit:]]{1,4}:){0,3}${dot_quad}"
 IPv6_z_q3="([[:xdigit:]]{1,4}:){2}:([[:xdigit:]]{1,4}:){0,2}${dot_quad}"
 IPv6_z_q4="([[:xdigit:]]{1,4}:){3}:([[:xdigit:]]{1,4}:){0,1}${dot_quad}"
@@ -1144,6 +1138,17 @@ fe80:35::1
 fe80:0:0:0:35::1
 fe80:0:0:0:35:0:0:1
 fe80:0:0:0:0:35:0:1
+fe80:35::1%lo
+fe80:0:0:0:35::1%lo
+fe80:0:0:0:35:0:0:1%lo
+fe80:0:0:0:0:35:0:1%lo
+FF02::1:2
+FF02::1:2%eth1
+ff02::1:2%eth0
+FF02:0:0:0:0:0:1:2%eth0
+ff02:0:0:0:0:0:1:2%eth0
+Ff02:0:0:0:0:0:1:2%eth0
+fF02:0:0:0:0:0:1:2%eth0
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
