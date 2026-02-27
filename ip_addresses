@@ -25,7 +25,7 @@
 
 echo "Defining regular expressions for matching IPv4 and IPv6 addresses."
 # IPv4 regular expression
-dot_quad='((([1-9]?[0-9])|(1[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))\.){3}(([1-9]?[0-9])|(1[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))(/([0-9]|([12][0-9])|(3[0-2])))?'
+dot_quad='((([1-9]?[0-9])|(1[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))\.){3}(([1-9]?[0-9])|(1[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))'
 IPv4_CIDR='/([0-9]|([12][0-9])|(3[0-2]))'
 IPv4="${dot_quad}(${IPv4_CIDR})?"
 
@@ -1153,6 +1153,11 @@ FEC0:0:0:1::10.23.1.5%eth2
 fec0:0:0:1::10.23.1.5%eth2
 fec0:0:0:0:0:1234:5678:9abc%1
 64:ff9b::10.0.0.1
+64:ff9b::10.0.0.1/0
+64:ff9b::10.0.0.1/32
+64:ff9b::10.0.0.1/33
+64:ff9b::10.0.0.1/104
+64:ff9b::10.0.0.1/128
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1540,6 +1545,8 @@ CLAT_claimed_IPv6_address/128
 01.1.0.1
 001.1.0.1
 B:N::/64
+10.0.0.1/33
+64:ff9b::10.0.0.1/129
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
