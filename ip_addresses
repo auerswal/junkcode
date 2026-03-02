@@ -1145,6 +1145,9 @@ fec0:0:0:0:0:1234:5678:9abc%1
 64:ff9b::10.0.0.1/33
 64:ff9b::10.0.0.1/104
 64:ff9b::10.0.0.1/128
+2001:db8::c1a1
+64:ff9::10.0.0.1
+64:ff9b::
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
@@ -1533,7 +1536,9 @@ CLAT_claimed_IPv6_address/128
 001.1.0.1
 B:N::/64
 10.0.0.1/34
+10.0.0.1/129
 64:ff9b::10.0.0.1/129
+64:ff9b::10.0.01
 EOAdressen
 
 echo 'Testing the regular expressions using embedded test data.'
