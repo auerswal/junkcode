@@ -1148,6 +1148,8 @@ fec0:0:0:0:0:1234:5678:9abc%1
 2001:db8::c1a1
 64:ff9::10.0.0.1
 64:ff9b::
+ff02::db8:0:0
+ff02::db8:0:0%eth0
 %%%% no correct IP addresses below this line %%%%
 fe80::230:48ff:fed9:40f5%25n%C3%A9t0
 127/8
